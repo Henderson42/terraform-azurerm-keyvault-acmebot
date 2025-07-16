@@ -178,6 +178,12 @@ variable "log_analytics_workspace_id" {
   description = "The resource ID for a custom log analytics workspace. Setting this var will prevent the module from creating it's own workspace."
 }
 
+variable "create_log_analytics_workspace" {
+  type        = bool
+  default     = true
+  description = "A boolean flag to determine whether or not to create a log analytics workspace as part of deployment."
+}
+
 locals {
   external_account_binding = var.external_account_binding != null ? {
     "Acmebot:ExternalAccountBinding:KeyId"     = var.external_account_binding.key_id
