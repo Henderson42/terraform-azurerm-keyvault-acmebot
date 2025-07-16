@@ -34,7 +34,7 @@ resource "azurerm_service_plan" "serverfarm" {
 }
 
 resource "azurerm_log_analytics_workspace" "workspace" {
-  count = var.log_analytics_workspace_id == null ? 1 : 0
+  for_each = var.log_analytics_workspace_id == null ? [1] : []
 
   name                = "log-${var.app_base_name}"
   resource_group_name = var.resource_group_name
