@@ -79,6 +79,9 @@ resource "azurerm_windows_function_app" "function" {
   functions_extension_version = "~4"
   https_only                  = true
 
+  client_certificate_enabled = true
+  client_certificate_mode    = "Required"
+
   app_settings = merge({
     "FUNCTIONS_INPROC_NET8_ENABLED" = "1"
     "WEBSITE_RUN_FROM_PACKAGE"      = "https://stacmebotprod.blob.core.windows.net/keyvault-acmebot/v4/latest.zip"
